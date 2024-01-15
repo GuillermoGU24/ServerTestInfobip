@@ -10,6 +10,16 @@ app.get("/", (req, res) => {
   console.log("Bienvida");
   res.send("Bienvida");
 });
+
+app.route("/delivery").get(handleDeliveryReceipt).post(handleDeliveryReceipt);
+
+function handleDeliveryReceipt(request, response) {
+  const params = Object.assign(request.query, request.body);
+  console.log("----------- ESTO ES DEL WEBHOOK ----------");
+  console.log(params);
+  response.status(204).send();
+}
+
 app.post("/enviar-mensaje", (req, res) => {
   const options = {
     method: "POST",
