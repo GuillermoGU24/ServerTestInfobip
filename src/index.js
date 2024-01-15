@@ -6,6 +6,10 @@ const PORT = process.env.PORT || 3000; // Puedes cambiar el puerto según tu pre
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  console.log("Bienvida");
+  res.send("Bienvida");
+});
 app.post("/enviar-mensaje", (req, res) => {
   const options = {
     method: "POST",
