@@ -1,6 +1,8 @@
 const express = require("express");
 const https = require("follow-redirects").https;
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 app.get("/", (req, res) => {
@@ -51,6 +53,6 @@ app.post("/send-sms", (req, res) => {
   infobipRequest.end();
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("SMS API listening on port 3000");
 });
