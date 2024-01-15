@@ -17,9 +17,26 @@ function handleDeliveryReceipt(request, response) {
   const params = Object.assign(request.query, request.body);
   console.log("----------- ESTO ES DEL WEBHOOK ----------");
   console.log(params);
+
+  // Acceder a los objetos anidados y mostrar sus valores
+  if (params.results && params.results.length > 0) {
+    const firstResult = params.results[0];
+
+    if (firstResult.price) {
+      console.log("Price:", firstResult.price);
+    }
+
+    if (firstResult.status) {
+      console.log("Status:", firstResult.status);
+    }
+
+    if (firstResult.error) {
+      console.log("Error:", firstResult.error);
+    }
+  }
+
   response.status(204).send();
 }
-
 app.post("/enviar-mensaje", (req, res) => {
   const options = {
     method: "POST",
