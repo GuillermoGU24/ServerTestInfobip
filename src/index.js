@@ -2,7 +2,7 @@ const express = require("express");
 const https = require("follow-redirects").https;
 
 const app = express();
-const port = 3000; // Puedes cambiar el puerto según tu preferencia
+const PORT = process.env.PORT || 3000; // Puedes cambiar el puerto según tu preferencia
 
 app.use(express.json());
 
@@ -53,6 +53,6 @@ app.post("/enviar-mensaje", (req, res) => {
   apiRequest.end();
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
