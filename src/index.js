@@ -76,7 +76,7 @@ app.post("/enviar-mensaje", (req, res) => {
       {
         destinations: [{ to: "573202424924" }, { to: "573202424924" }],
         from: "ServiceSMS",
-        text: text,
+        text: {text},
       },
     ],
   });
