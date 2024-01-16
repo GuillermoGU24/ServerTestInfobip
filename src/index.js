@@ -38,6 +38,7 @@ function handleDeliveryReceipt(request, response) {
   response.status(204).send();
 }
 app.post("/enviar-mensaje", (req, res) => {
+  const {text} = req.body;
   const options = {
     method: "POST",
     hostname: "xlmn2l.api.infobip.com",
@@ -75,7 +76,7 @@ app.post("/enviar-mensaje", (req, res) => {
       {
         destinations: [{ to: "573202424924" }, { to: "573202424924" }],
         from: "ServiceSMS",
-        text: "Hello,\n\nThis is a test message from Infobip. Have a nice day!",
+        text: text,
       },
     ],
   });
