@@ -39,6 +39,8 @@ function handleDeliveryReceipt(request, response) {
 }
 app.post("/enviar-mensaje", (req, res) => {
   const {text} = req.body;
+  console.log(text);
+  
   const options = {
     method: "POST",
     hostname: "xlmn2l.api.infobip.com",
