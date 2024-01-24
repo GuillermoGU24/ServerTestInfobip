@@ -38,6 +38,8 @@ function handleDeliveryReceipt(request, response) {
   response.status(204).send();
 }
 app.post("/enviar-mensaje", (req, res) => {
+  const { text} = req.body;
+
   const options = {
     method: "POST",
     hostname: "xlmn2l.api.infobip.com",
@@ -69,16 +71,25 @@ app.post("/enviar-mensaje", (req, res) => {
     console.error(error);
     res.status(500).send("Internal Server Error");
   });
-
   const postData = JSON.stringify({
     messages: [
       {
-        destinations: [{ to: "573202424924" }, { to: "573202424924" }],
+        destinations: [{ to: "573202424924" }],
         from: "ServiceSMS",
-        text: "Hello,\n\nThis is a test message from Infobip. Have a nice day!",
+        text: text,
       },
     ],
   });
+
+  // const postData = JSON.stringify({
+  //   // messages: [
+  //   //   {
+  //   //     destinations: [{ to: "573202424924" }, { to: "573202424924" }],
+  //   //     from: "ServiceSMS",
+  //   //     text: "Hello,\n\nThis is a test message from Infobip. Have a nice day!",
+  //   //   },
+  //   // ],
+  // });
 
   apiRequest.write(postData);
   apiRequest.end();
