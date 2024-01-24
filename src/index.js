@@ -38,7 +38,7 @@ function handleDeliveryReceipt(request, response) {
   response.status(204).send();
 }
 app.post("/enviar-mensaje", (req, res) => {
-  const { text} = req.body;
+  const { text } = req.body;
 
   const options = {
     method: "POST",
