@@ -3,9 +3,10 @@ const https = require("follow-redirects").https;
 
 const app = express();
 const PORT = process.env.PORT || 3000; // Puedes cambiar el puerto según tu preferencia
+const cors = require("cors"); 
 
 app.use(express.json());
-
+app.use(cors())
 app.get("/", (req, res) => {
   console.log("Bienvida");
   res.send("Bienvida");
